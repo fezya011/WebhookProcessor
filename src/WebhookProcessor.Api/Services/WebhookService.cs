@@ -1,4 +1,4 @@
-﻿using Bifrost.Core;
+using Bifrost.Core;
 using WebhookProcessor.Core.Enums;
 using WebhookProcessor.Core.Jobs;
 using WebhookProcessor.Core.Models;
@@ -50,11 +50,12 @@ public class WebhookService
 
         if (!result.IsAccepted)
         {
-            _logger.LogWarning(
-                $"The queue is full: ClientId={clientId}, " +
-                $"Pending={_orchestrator.PendingCount}, " +
-                $"Capacity={_orchestrator.Capacity}"
+            _logger.LogWarning("The queue is full: ClientId={ClientId}, Pending={PendingCount}, Capacity={Capacity}",
+                clientId,
+                _orchestrator.PendingCount,
+                _orchestrator.Capacity
             );
+
 
             return new WebhookResult
             {
@@ -64,9 +65,10 @@ public class WebhookService
             };
         }
 
-        _logger.LogInformation(
-            $"Webhook accepted: ClientId={clientId}, " +
-            $"Priority={priority}, Key={request.IdempotencyKey}"
+        _logger.LogInformation("Webhook accepted: ClientId={ClientId}, Priority={Priority}, Key={IdempotencyKey}",
+            clientId,
+            request.Priority,
+            request.IdempotencyKey
         );
 
         return new WebhookResult

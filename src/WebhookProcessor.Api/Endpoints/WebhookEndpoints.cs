@@ -8,7 +8,7 @@ public static class WebhookEndpoints
 {
     public static void MapWebhookEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        var group = endpoints.MapGroup("/api/webhooks").WithTags("Webhooks").WithOpenApi();
+        var group = endpoints.MapGroup("/api/webhooks").WithTags("Webhooks");
 
         group.MapPost("/{clientId}", SubmitWebhookAsync)
              .WithName("SubmitWebhook")

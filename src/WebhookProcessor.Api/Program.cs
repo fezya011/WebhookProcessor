@@ -18,18 +18,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
-
 app.MapWebhookEndpoints();
 
 app.MapHealthChecks("/health");
 
-//app.MapGet("/", () => new
-//{
-//    Service = "Webhook Processor",
-//    Version = "1.0.0",
-//    Status = "Running",
-//    TimestampAttribute = DateTime.Now
-//});
-
-app.Run();
+await app.RunAsync();

@@ -12,7 +12,7 @@ public class WebhookHandler(
     public async ValueTask HandleAsync(WebhookJob job, CancellationToken ct)
     {
         // 1. Здесь мы можем обогатить данные (например, получить информацию о клиенте из БД)
-        logger.LogInformation($"Processing webhook for Client: {job.ClientId}");
+        logger.LogInformation("Processing webhook for Client {ClientId}", job.ClientId);
 
         // 2. Отправляем запрос в PHP
         var responce = await phpClient.SendWebhookAsync(job.ClientId, job.Payload, ct);
@@ -23,6 +23,6 @@ public class WebhookHandler(
             throw new HttpRequestException($"PHP API returned {responce.StatusCode}");
         }
 
-        logger.LogInformation($"Succesfully processed webhook for Client: {job.ClientId}");
+        logger.LogInformation("Succesfully processed webhook for Client {ClientId}", job.ClientId);
     }
 }
