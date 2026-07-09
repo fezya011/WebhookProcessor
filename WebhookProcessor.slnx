@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Forge.Orchestration/Forge.Orchestration.csproj" />
+    <Project Path="src/WebhookProcessor.Api/WebhookProcessor.Api.csproj" />
+    <Project Path="src/WebhookProcessor.Core/WebhookProcessor.Core.csproj" />
+    <Project Path="src/WebhookProcessor.Infrastructure/WebhookProcessor.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Forge.Orchestration.Tests/Forge.Orchestration.Tests.csproj" />
+    <Project Path="tests/WebhookProcessor.Integration.Tests/WebhookProcessor.Integration.Tests.csproj" />
+    <Project Path="tests/WebhookProcessor.Unit.Tests/WebhookProcessor.Unit.Tests.csproj" />
+  </Folder>
+</Solution>

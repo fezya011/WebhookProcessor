@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LevelUp.Bifrost" Version="0.5.1" />
+    <PackageReference Include="LevelUp.Bifrost.Core" Version="0.5.1" />
+    <PackageReference Include="LevelUp.Bifrost.HealthChecks" Version="0.5.1" />
+    <PackageReference Include="LevelUp.Bifrost.OpenTelemetry" Version="0.5.1" />
+    <PackageReference Include="LevelUp.Bifrost.Resilience" Version="0.5.1" />
+  </ItemGroup>
+
+</Project>

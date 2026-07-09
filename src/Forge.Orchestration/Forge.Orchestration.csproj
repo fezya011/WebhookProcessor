@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+    <Folder Include="Queue\" />
+    <Folder Include="Workers\" />
+    <Folder Include="Resilience\" />
+    <Folder Include="DeadLetter\" />
+    <Folder Include="Diagnostics\" />
+    <Folder Include="HealthChecks\" />
+    <Folder Include="DependencyInjection\" />
+  </ItemGroup>
+
+</Project>
