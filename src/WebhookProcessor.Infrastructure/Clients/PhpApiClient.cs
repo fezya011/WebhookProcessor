@@ -17,11 +17,11 @@ public class PhpApiClient : IPhpApiClient
         _logger = logger;
     }
 
-    public async Task<HttpResponseMessage> SendWebhookAsync(string clientId, string payload, CancellationToken cancellationToken = default)
+    public async Task<HttpResponseMessage> SendWebhookAsync(string clientId, string payload, CancellationToken ct)
     {
         try
         {
-            _logger.LogInformation($"Sending in PHP: ClientId={clientId}");
+            _logger.LogInformation("Sending in PHP: ClientId={ClientId}", clientId);
 
             var content = new StringContent(
                 JsonSerializer.Serialize(new { ClientId = clientId, Payload = payload }),
@@ -32,23 +32,23 @@ public class PhpApiClient : IPhpApiClient
             content.Headers.Add("X-Client-Id", clientId);
             content.Headers.Add("X-Request-Id", Guid.NewGuid().ToString());
 
-            var responce = await _httpClient.PostAsync("/api/webhook", content, cancellationToken);
+            var response = await _httpClient.PostAsync("/api/webhook", content, ct);
 
-            if (responce.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
-                _logger.LogInformation($"Successfully sent to PHP: ClientId={clientId}");
+                _logger.LogInformation("Successfully sent to PHP: ClientId={ClientId}", clientId);
             }
             else
             {
-                _logger.LogWarning($"PHP returned an error {responce.StatusCode}: {clientId}");
+                _logger.LogWarning("PHP returned an error {StatusCode}: {ClientId}", response.StatusCode, clientId);
             }
 
-            return responce;
+            return response;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"PHP sending error: {clientId}");
-            throw;
+            _logger.LogError(ex, "PHP sending error: {ClientId}", clientId);
+            throw new InvalidOperationException($"PHP service call failed for client {clientId}", ex);
         }
     }
 }
